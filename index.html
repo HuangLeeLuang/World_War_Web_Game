@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>霓虹霸權</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">ND</span>
+          <div>
+            <h1>霓虹霸權</h1>
+            <p id="turnLabel">第 1 回合</p>
+          </div>
+        </div>
+        <div class="stat-strip" id="statStrip"></div>
+        <div class="top-actions">
+          <a class="ghost-btn nav-link" href="guide.html">攻略</a>
+          <a class="ghost-btn nav-link" href="modifier.html">修改器</a>
+          <button class="ghost-btn" type="button" data-command="save">儲存</button>
+          <button class="ghost-btn" type="button" data-command="load">讀取</button>
+          <button class="danger-btn" type="button" data-command="new-game">新局</button>
+        </div>
+      </header>
+
+      <main class="game-grid">
+        <section class="panel map-panel" aria-label="城市地圖">
+          <div class="panel-head">
+            <div>
+              <h2>城市戰局</h2>
+              <p id="mapSummary">黑曜聯盟控制 0 座城市</p>
+            </div>
+            <button class="primary-btn" type="button" data-command="end-turn">結束回合</button>
+          </div>
+          <div class="map-canvas" id="cityMap">
+            <svg class="route-layer" id="routeLayer" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <div class="city-layer" id="cityLayer"></div>
+          </div>
+        </section>
+
+        <section class="panel detail-panel" aria-label="指揮中心">
+          <div class="tabs" role="tablist">
+            <button class="tab active" type="button" data-tab="city">城市</button>
+            <button class="tab" type="button" data-tab="officers">人物</button>
+            <button class="tab" type="button" data-tab="assets">資產</button>
+            <button class="tab" type="button" data-tab="actions">行動</button>
+          </div>
+          <div id="detailPanel"></div>
+        </section>
+
+        <section class="panel action-panel" aria-label="行動牌">
+          <div class="panel-head compact">
+            <h2>本回合行動</h2>
+            <span id="buffLabel" class="pill">無加成</span>
+          </div>
+          <div class="action-hand" id="actionHand"></div>
+        </section>
+
+        <section class="panel market-panel" aria-label="資產商店">
+          <div class="panel-head compact">
+            <h2>黑市與資產</h2>
+            <select id="marketFilter" class="select-control" aria-label="資產分類">
+              <option value="all">全部</option>
+              <option value="personal">個人物品</option>
+              <option value="vehicle">載具</option>
+              <option value="lifestyle">生活資產</option>
+              <option value="industry">戰略產業</option>
+            </select>
+          </div>
+          <div class="market-list" id="marketList"></div>
+        </section>
+
+        <section class="panel log-panel" aria-label="情報紀錄">
+          <div class="panel-head compact">
+            <h2>情報紀錄</h2>
+            <button class="ghost-btn" type="button" data-command="clear-log">清空</button>
+          </div>
+          <div class="log-list" id="logList"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="portraitUploadTemplate">
+      <label class="upload-box">
+        <input type="file" accept="image/*" id="portraitInput" />
+        <span>上傳頭像</span>
+      </label>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
