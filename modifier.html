@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>霓虹霸權修改器</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="pages.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="page-header">
+        <div class="brand">
+          <span class="brand-mark">ND</span>
+          <div>
+            <h1>霓虹霸權修改器</h1>
+            <p id="saveStatus">讀取中</p>
+          </div>
+        </div>
+        <nav class="page-nav" aria-label="頁面連結">
+          <a class="ghost-btn nav-link" href="index.html">回遊戲</a>
+          <a class="ghost-btn nav-link" href="guide.html">攻略</a>
+        </nav>
+      </header>
+
+      <main class="modifier-layout">
+        <section class="tool-panel">
+          <div class="tool-actions">
+            <button class="primary-btn" type="button" data-tool="save">套用並儲存</button>
+            <button class="ghost-btn" type="button" data-tool="reload">重新讀取</button>
+            <button class="ghost-btn" type="button" data-tool="create">建立初始存檔</button>
+            <button class="danger-btn" type="button" data-tool="max-player">玩家滿資源</button>
+          </div>
+          <div class="modifier-note">
+            修改後按「套用並儲存」，再回遊戲按「讀取」或重新整理頁面。若瀏覽器限制本機存檔，可使用下方 JSON 匯出/匯入。
+          </div>
+        </section>
+
+        <section class="editor-section">
+          <div class="section-head">
+            <h2>全局</h2>
+          </div>
+          <div id="globalEditor" class="editor-grid"></div>
+        </section>
+
+        <section class="editor-section">
+          <div class="section-head">
+            <h2>勢力</h2>
+          </div>
+          <div id="factionEditor" class="editor-grid"></div>
+        </section>
+
+        <section class="editor-section">
+          <div class="section-head">
+            <h2>城市</h2>
+          </div>
+          <div id="cityEditor" class="editor-grid"></div>
+        </section>
+
+        <section class="editor-section">
+          <div class="section-head">
+            <h2>人物</h2>
+          </div>
+          <div id="officerEditor" class="editor-grid"></div>
+        </section>
+
+        <section class="editor-section">
+          <div class="section-head">
+            <h2>進階 JSON</h2>
+          </div>
+          <textarea id="jsonBox" class="json-box" spellcheck="false"></textarea>
+          <div class="tool-actions">
+            <button class="ghost-btn" type="button" data-tool="export-json">重新產生 JSON</button>
+            <button class="danger-btn" type="button" data-tool="import-json">從 JSON 覆蓋</button>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="modifier.js"></script>
+  </body>
+</html>
