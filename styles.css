@@ -1,0 +1,730 @@
+:root {
+  color-scheme: dark;
+  --bg: #07090c;
+  --panel: rgba(13, 16, 20, 0.88);
+  --panel-strong: rgba(20, 24, 30, 0.94);
+  --line: rgba(235, 245, 255, 0.14);
+  --line-strong: rgba(246, 204, 96, 0.38);
+  --text: #eef3f5;
+  --muted: #9ca9af;
+  --cyan: #16d5c8;
+  --amber: #f6cc60;
+  --red: #ef4d5d;
+  --green: #62d47d;
+  --steel: #8ea0a8;
+  --magenta: #d862ff;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family:
+    "Microsoft JhengHei",
+    "PingFang TC",
+    "Noto Sans TC",
+    system-ui,
+    sans-serif;
+  background:
+    linear-gradient(180deg, rgba(7, 9, 12, 0.55), #07090c 42%),
+    url("assets/city-background.png") center top / cover fixed;
+  color: var(--text);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 18px;
+  background:
+    radial-gradient(circle at 16% 10%, rgba(22, 213, 200, 0.18), transparent 24rem),
+    linear-gradient(90deg, rgba(7, 9, 12, 0.94), rgba(7, 9, 12, 0.72));
+}
+
+.topbar {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.1fr) minmax(360px, 2.4fr) auto;
+  gap: 16px;
+  align-items: center;
+  max-width: 1500px;
+  margin: 0 auto 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(22, 213, 200, 0.65);
+  background: linear-gradient(135deg, rgba(22, 213, 200, 0.22), rgba(239, 77, 93, 0.2));
+  color: var(--cyan);
+  font-weight: 900;
+  letter-spacing: 0;
+  box-shadow: 0 0 28px rgba(22, 213, 200, 0.18);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.55rem;
+  letter-spacing: 0;
+}
+
+h2 {
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+h3 {
+  font-size: 0.95rem;
+}
+
+.brand p,
+.panel-head p,
+.muted {
+  color: var(--muted);
+}
+
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(86px, 1fr));
+  gap: 8px;
+}
+
+.stat {
+  min-height: 48px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  background: rgba(10, 13, 17, 0.7);
+}
+
+.stat small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.stat strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 1rem;
+}
+
+.top-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.primary-btn,
+.ghost-btn,
+.danger-btn,
+.small-btn,
+.tab,
+.select-control {
+  min-height: 38px;
+  border: 1px solid var(--line);
+  background: rgba(15, 19, 25, 0.88);
+}
+
+.primary-btn,
+.small-btn.buy {
+  border-color: rgba(22, 213, 200, 0.6);
+  background: linear-gradient(135deg, rgba(22, 213, 200, 0.92), rgba(15, 104, 118, 0.92));
+  color: #041213;
+  font-weight: 800;
+}
+
+.danger-btn,
+.small-btn.attack {
+  border-color: rgba(239, 77, 93, 0.62);
+  background: rgba(239, 77, 93, 0.17);
+  color: #ffdfe4;
+}
+
+.ghost-btn,
+.small-btn {
+  color: var(--text);
+}
+
+.primary-btn,
+.ghost-btn,
+.danger-btn {
+  padding: 0 14px;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: minmax(520px, 1.25fr) minmax(380px, 0.82fr);
+  grid-template-areas:
+    "map detail"
+    "actions market"
+    "log market";
+  gap: 16px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.map-panel {
+  grid-area: map;
+}
+
+.detail-panel {
+  grid-area: detail;
+  min-height: 580px;
+}
+
+.action-panel {
+  grid-area: actions;
+}
+
+.market-panel {
+  grid-area: market;
+}
+
+.log-panel {
+  grid-area: log;
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.panel-head.compact {
+  padding: 12px 14px;
+}
+
+.map-canvas {
+  position: relative;
+  height: 520px;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(11, 16, 20, 0.9), rgba(35, 19, 22, 0.7)),
+    radial-gradient(circle at 58% 50%, rgba(246, 204, 96, 0.14), transparent 18rem);
+}
+
+.map-canvas::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent 92%);
+}
+
+.route-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.route-line {
+  stroke: rgba(142, 160, 168, 0.34);
+  stroke-width: 0.38;
+  stroke-dasharray: 1.4 1.2;
+}
+
+.city-node {
+  position: absolute;
+  display: grid;
+  width: 116px;
+  min-height: 102px;
+  padding: 6px;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--line);
+  background: rgba(8, 11, 15, 0.9);
+  text-align: left;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.36);
+}
+
+.city-node::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border: 2px solid currentColor;
+  background: #0a0d11;
+  position: absolute;
+  top: -8px;
+  left: calc(50% - 7px);
+  box-shadow: 0 0 18px currentColor;
+}
+
+.city-node.active {
+  border-color: var(--amber);
+  box-shadow:
+    0 0 0 2px rgba(246, 204, 96, 0.14),
+    0 18px 42px rgba(0, 0, 0, 0.55);
+}
+
+.city-node strong,
+.city-node span {
+  display: block;
+}
+
+.city-node strong {
+  font-size: 0.82rem;
+}
+
+.city-node span {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.city-node-art {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 5px;
+  object-fit: cover;
+  display: block;
+  background:
+    linear-gradient(135deg, rgba(22, 213, 200, 0.18), rgba(246, 204, 96, 0.14)),
+    rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--line);
+}
+
+.tab {
+  border-top: 0;
+  border-left: 0;
+  min-height: 46px;
+}
+
+.tab:last-child {
+  border-right: 0;
+}
+
+.tab.active {
+  background: rgba(22, 213, 200, 0.16);
+  color: var(--cyan);
+  box-shadow: inset 0 -2px 0 var(--cyan);
+}
+
+#detailPanel {
+  padding: 14px;
+}
+
+.city-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  min-height: 178px;
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, transparent 20%, rgba(5, 7, 10, 0.86)),
+    rgba(255, 255, 255, 0.04);
+}
+
+.city-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 20%, rgba(5, 7, 10, 0.88));
+}
+
+.city-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.city-hero .pill {
+  position: relative;
+  z-index: 1;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.metric {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.035);
+  padding: 10px;
+  min-height: 62px;
+}
+
+.metric small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.metric strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 1rem;
+}
+
+.command-row,
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.small-btn {
+  min-height: 34px;
+  padding: 0 10px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.officer-list,
+.asset-list,
+.market-list,
+.action-hand,
+.log-list {
+  display: grid;
+  gap: 10px;
+}
+
+.officer-card,
+.asset-card,
+.market-card,
+.action-card,
+.log-entry {
+  border: 1px solid var(--line);
+  background: rgba(10, 13, 17, 0.72);
+}
+
+.officer-card,
+.market-card,
+.action-card {
+  padding: 12px;
+}
+
+.asset-card {
+  display: grid;
+  grid-template-columns: 104px 1fr;
+  gap: 10px;
+  padding: 10px;
+}
+
+.officer-card {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 12px;
+}
+
+.officer-card.active {
+  border-color: rgba(246, 204, 96, 0.58);
+}
+
+.portrait {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  background-position: center;
+  background-size: cover;
+  color: #081014;
+  font-weight: 900;
+  overflow: hidden;
+}
+
+.portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ability-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.ability {
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.045);
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.ability strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+.action-hand,
+.market-list,
+.log-list {
+  padding: 12px;
+}
+
+.action-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  border-left: 3px solid var(--cyan);
+}
+
+.action-card.military {
+  border-left-color: var(--red);
+}
+
+.action-card.intel {
+  border-left-color: var(--magenta);
+}
+
+.action-card.money {
+  border-left-color: var(--amber);
+}
+
+.action-card.social {
+  border-left-color: var(--green);
+}
+
+.card-copy p,
+.market-card p,
+.asset-card p,
+.log-entry {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.asset-thumb,
+.market-thumb {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(135deg, rgba(22, 213, 200, 0.18), rgba(239, 77, 93, 0.16)),
+    rgba(255, 255, 255, 0.04);
+}
+
+.thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.market-card {
+  display: grid;
+  grid-template-columns: 112px 1fr auto;
+  gap: 10px;
+  align-items: start;
+}
+
+.market-card h3 {
+  margin-bottom: 4px;
+}
+
+.cost {
+  color: var(--amber);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.select-control {
+  min-width: 132px;
+  padding: 0 10px;
+  color: var(--text);
+}
+
+.log-list {
+  max-height: 320px;
+  overflow: auto;
+}
+
+.log-entry {
+  padding: 9px 10px;
+}
+
+.log-entry:first-child {
+  border-color: rgba(246, 204, 96, 0.42);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.text-control {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid var(--line);
+  background: rgba(5, 7, 10, 0.8);
+  color: var(--text);
+  padding: 0 10px;
+}
+
+.upload-box {
+  display: grid;
+  place-items: center;
+  min-height: 38px;
+  border: 1px dashed rgba(22, 213, 200, 0.48);
+  color: var(--cyan);
+  cursor: pointer;
+}
+
+.upload-box input {
+  display: none;
+}
+
+.empty-state {
+  padding: 18px;
+  border: 1px dashed var(--line);
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 1180px) {
+  .topbar,
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    align-items: stretch;
+  }
+
+  .stat-strip {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .game-grid {
+    grid-template-areas:
+      "map"
+      "detail"
+      "actions"
+      "market"
+      "log";
+  }
+
+  .detail-panel {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    padding: 10px;
+  }
+
+  .stat-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .top-actions {
+    justify-content: stretch;
+  }
+
+  .top-actions button {
+    flex: 1;
+  }
+
+  .map-canvas {
+    height: 460px;
+  }
+
+  .city-node {
+    width: 96px;
+    min-height: 96px;
+  }
+
+  .panel-head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .summary-grid,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .market-card,
+  .asset-card {
+    grid-template-columns: 1fr;
+  }
+
+  .city-hero {
+    min-height: 150px;
+  }
+}
